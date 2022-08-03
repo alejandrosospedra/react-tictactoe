@@ -29,6 +29,9 @@ class Board extends React.Component {
   //to determine when a component requires re-rendering.
   handleClick(i) {
     const squares = this.state.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({squares: squares, 
       xIsNext: !this.state.xIsNext,
