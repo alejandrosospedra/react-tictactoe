@@ -23,6 +23,13 @@ class Board extends React.Component {
     };
   }
 
+  //Note how in handleClick, we call .slice() to create a 
+  //copy of the squares array to modify instead of modifying 
+  //the existing array.
+  //Detecting changes in immutable objects is considerably easier. 
+  //If the immutable object that is being referenced is different 
+  //than the previous one, then the object has changed. Which helps 
+  //to determine when a component requires re-rendering.
   handleClick(i) {
     const squares = this.state.squares.slice();
     squares[i] = 'X';
