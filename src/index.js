@@ -80,7 +80,7 @@ class Game extends React.Component {
       history: history.concat([
         {
           squares: squares,
-          fila: Math.trunc(i/3),
+          fila: Math.trunc(i/3) + 1,
           col: (i % 3) + 1,
         }
       ]),
@@ -102,8 +102,9 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
+      const moveCopy = history[move]; 
       const desc = move ?
-        'Go to move #' + move + ' (' + current.fila + ',' + current.col + ')' :
+        'Go to move #' + move + ' (' + moveCopy.fila + ',' + moveCopy.col + ')' :
         'Go to game start';
       return (
         <li key={move}>
